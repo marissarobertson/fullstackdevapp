@@ -1,5 +1,6 @@
 {
  "root": true,
+ "ignorePatterns": ["dist", "node_modules", "coverage", "backend/coverage"],
  "env": {
  "browser": true
 },
