@@ -45,3 +45,7 @@ jobs:
       - id: deploy-frontend
         name: Deploy frontend
         uses: google-github-actions/deploy-cloudrun@v1
+        with:
+    service: blog-frontend
+    image: ${{ secrets.DOCKER_HUB_USERNAME }}/blog-frontend:${{ github.sha }}
+    region: ${{ secrets.GOOGLECLOUD_REGION }}
