@@ -26,7 +26,7 @@ jobs:
           context: ./backend
           file: ./backend/Dockerfile
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/blog-backend:${{ github.sha }}
+          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/blog-backend:${{ github.sha }}
       - id: deploy-backend
         name: Deploy backend
         uses: google-github-actions/deploy-cloudrun@v1
