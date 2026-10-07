@@ -12,7 +12,7 @@ export function CreatePost() {
 
   const queryClient = useQueryClient();
   const createPostMutation = useMutation({
-    mutationFn: () => createPost({ title, contents }),
+    mutationFn: () => createPost(token, { title, contents }),
     onSuccess: () => queryClient.invalidateQueries(["posts"]),
   });
 
@@ -26,7 +26,7 @@ export function CreatePost() {
   return (
     <form onSubmit={handleSubmit}>
       <div>
-        <label htmlFor="create-title">Title: </label>
+        <label htmlFor="create-title"> Title: </label>
         <input
           type="text"
           name="create-title"
@@ -45,7 +45,7 @@ export function CreatePost() {
       <input
         type="submit"
         value={createPostMutation.isPending ? "Creating..." : "Create"}
-        disabled={!title || createPostMutation.isPending}
+        disabled={!title}
       />
       {createPostMutation.isSuccess ? (
         <>
