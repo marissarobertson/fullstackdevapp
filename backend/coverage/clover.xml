@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1791155271084" clover="3.2.0">
-  <project timestamp="1791155271084" name="All files">
+<coverage generated="1791298861633" clover="3.2.0">
+  <project timestamp="1791298861633" name="All files">
     <metrics statements="36" coveredstatements="22" conditionals="12" coveredconditionals="4" methods="13" coveredmethods="10" elements="61" coveredelements="36" complexity="0" loc="36" ncloc="36" packages="3" files="5" classes="5"/>
     <package name="db">
       <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
@@ -18,7 +18,7 @@
       <file name="post.js" path="/workspaces/fullstackdevapp/backend/src/db/models/post.js">
         <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
         <line num="3" count="1" type="stmt"/>
-        <line num="14" count="1" type="stmt"/>
+        <line num="13" count="1" type="stmt"/>
       </file>
       <file name="user.js" path="/workspaces/fullstackdevapp/backend/src/db/models/user.js">
         <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
