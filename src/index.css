@@ -88,6 +88,7 @@ h3 {
   font-size: 1rem;
   line-height: 1.5;
   font-family: 'verdana';
+  white-space: pre-wrap;
 }
 
 .post-author {
@@ -99,3 +100,4 @@ h3 {
   height: auto;
   border-radius: 4px;
 }
+

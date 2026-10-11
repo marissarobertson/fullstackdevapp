@@ -1,5 +1,6 @@
 import mongoose, { Schema } from "mongoose";
 
+// Recipe post: title, ingredients (contents), optional image, and tags
 const postSchema = new Schema(
   {
     title: { type: String, required: true },
