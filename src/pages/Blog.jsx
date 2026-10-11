@@ -23,10 +23,12 @@ export function Blog() {
       <hr />
       <br />
       <h1>Welcome to my blog!</h1>
+      <p> View all recipes below. You can filter and search by user.</p>
       <CreatePost />
       <br />
       <hr />
-      Filter by:
+      <p>Filter by</p>
+
       <PostFilter
         field="author"
         value={author}

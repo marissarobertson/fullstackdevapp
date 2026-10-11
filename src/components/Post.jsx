@@ -3,11 +3,11 @@ import { User } from "./User.jsx";
 
 export function Post({ title, contents, author }) {
   return (
-    <article>
-      <h3>{title}</h3>
-      <div>{contents}</div>
+    <article className="post">
+      <h3 className="post-title">{title}</h3>
+      <div className="post-content">{contents}</div>
       {author && (
-        <em>
+        <em className="post-author">
           <br />
           Written by <User id={author} />
         </em>

@@ -1,0 +1,96 @@
+@font-face {
+    font-family: "Modern Era Bold";
+    src: url("https://db.onlinewebfonts.com/t/540ea8ceb19b7b438598461f395f6ca1.eot");
+    src: url("https://db.onlinewebfonts.com/t/540ea8ceb19b7b438598461f395f6ca1.eot?#iefix")format("embedded-opentype"),
+    url("https://db.onlinewebfonts.com/t/540ea8ceb19b7b438598461f395f6ca1.woff2")format("woff2"),
+    url("https://db.onlinewebfonts.com/t/540ea8ceb19b7b438598461f395f6ca1.woff")format("woff"),
+    url("https://db.onlinewebfonts.com/t/540ea8ceb19b7b438598461f395f6ca1.ttf")format("truetype"),
+    url("https://db.onlinewebfonts.com/t/540ea8ceb19b7b438598461f395f6ca1.svg#Modern Era Bold")format("svg");
+}
+
+@font-face {
+  font-family: 'Romie';
+  src: url('/assets/fonts/romie/Romie-Regular.woff2') format('woff2'),
+       url('/assets/fonts/romie/Romie-Regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face{
+.petit-formal-script-regular {
+  font-family: "Petit Formal Script", cursive;
+  font-weight: 400;
+  font-style: normal;
+}}
+
+form div {
+  margin-bottom: 1.5rem;
+  margin-top: 1rem;
+}
+textarea {
+  display: block;
+  font-family: "Modern Era Bold";
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  font-family: "Modern Era Bold";
+}
+
+div{
+    color:#1F0062;
+    font-family: "Modern Era Bold";
+}
+
+h1 {
+  font-size: 3.5rem;
+  line-height: 1;
+  max-width: 15ch;
+  color: #93B2D1;
+  text-align: center;
+  font-family: "Modern Era Bold";
+}
+
+p {
+  font-size: 1rem;
+  max-width: 70ch;
+  color: #1F0062;
+  font-family: "Modern Era Bold";
+}
+
+body {
+  background-color: white;
+}
+
+header {
+    background-color: lightblue;
+}
+
+label {
+    font-family: "Modern Era Bold";
+    color: #93B2D1;
+}
+
+h3 {
+    font-family: 'Romie';
+}
+
+.post-title {
+  color: #1F0062;
+  font-family: "Modern Era Bold";
+  font-size: 1.6rem;
+}
+
+.post-content {
+  color: #000000;
+  font-size: 1rem;
+  line-height: 1.5;
+  font-family: 'verdana';
+}
+
+.post-author {
+  color: #93B2D1;
+  font-family: 'Modern Era Bold';
+}

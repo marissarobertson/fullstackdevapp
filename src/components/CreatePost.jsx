@@ -8,11 +8,14 @@ export function CreatePost() {
 
   const [contents, setContents] = useState("");
 
+  const [imageUrl, setImageUrl] = useState("");
+
   const [token] = useAuth();
 
   const queryClient = useQueryClient();
+
   const createPostMutation = useMutation({
-    mutationFn: () => createPost(token, { title, contents }),
+    mutationFn: () => createPost(token, { title, contents, imageUrl }),
     onSuccess: () => queryClient.invalidateQueries(["posts"]),
   });
 
@@ -26,7 +29,7 @@ export function CreatePost() {
   return (
     <form onSubmit={handleSubmit}>
       <div>
-        <label htmlFor="create-title"> Title: </label>
+        <label htmlFor="create-title"> Recipe Name: </label>
         <input
           type="text"
           name="create-title"
@@ -36,12 +39,23 @@ export function CreatePost() {
         />
       </div>
       <br />
+
+      <p>Ingredients List:</p>
       <textarea
         value={contents}
         onChange={(e) => setContents(e.target.value)}
       />
-      <br />
-      <br />
+      <div></div>
+
+      <label htmlFor="imageUrl">Image URL:</label>
+      <input
+        type="url"
+        id="imageUrl"
+        placeholder="https://example.com"
+        value={imageUrl}
+        onChange={(e) => setImageUrl(e.target.value)}
+      />
+
       <input
         type="submit"
         value={createPostMutation.isPending ? "Creating..." : "Create"}
