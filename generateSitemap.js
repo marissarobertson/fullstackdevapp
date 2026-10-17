@@ -1,5 +1,6 @@
 import slug from "slug";
 import dotenv from "dotenv";
+import process from "node:process";
 dotenv.config();
 const baseUrl = process.env.FRONTEND_URL;
 export async function generateSitemap() {
