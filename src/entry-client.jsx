@@ -2,6 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { App } from "./App.jsx";
 import { routes } from "./routes.jsx";
 
 const router = createBrowserRouter(routes);
@@ -9,6 +10,8 @@ const router = createBrowserRouter(routes);
 ReactDOM.hydrateRoot(
   document.getElementById("root"),
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <App>
+      <RouterProvider router={router} />
+    </App>
   </React.StrictMode>,
 );
