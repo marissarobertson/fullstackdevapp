@@ -20,15 +20,22 @@ export function Post({
           <h3>{title}</h3>
         </Link>
       )}
-      {imageUrl && (
-        <img
-          src={imageUrl}
-          alt={title}
-          className="recipe-image"
-          referrerPolicy="no-referrer"
-        />
+
+      {/* Correctly combined condition wrapping both elements safely */}
+      {fullPost && (
+        <>
+          {imageUrl && (
+            <img
+              src={imageUrl}
+              alt={title}
+              className="recipe-image"
+              referrerPolicy="no-referrer"
+            />
+          )}
+          <div>{contents}</div>
+        </>
       )}
-      {fullPost && <div>{contents}</div>}
+
       {author && (
         <em>
           {fullPost && <br />}
@@ -38,6 +45,7 @@ export function Post({
     </article>
   );
 }
+
 Post.propTypes = {
   title: PropTypes.string.isRequired,
   contents: PropTypes.string,
