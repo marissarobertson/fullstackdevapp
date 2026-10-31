@@ -8,7 +8,7 @@ export function Post({
   contents,
   imageUrl,
   author,
-  _id,
+  id,
   fullPost = false,
 }) {
   return (
@@ -16,7 +16,7 @@ export function Post({
       {fullPost ? (
         <h3>{title}</h3>
       ) : (
-        <Link to={`/posts/${_id}/${slug(title)}`}>
+        <Link to={`/posts/${id}/${slug(title)}`}>
           <h3>{title}</h3>
         </Link>
       )}
@@ -39,7 +39,7 @@ export function Post({
       {author && (
         <em>
           {fullPost && <br />}
-          Written by <User id={author} />
+          Written by <User {...author} />
         </em>
       )}
     </article>
@@ -49,8 +49,8 @@ export function Post({
 Post.propTypes = {
   title: PropTypes.string.isRequired,
   contents: PropTypes.string,
+  author: PropTypes.shape(User.propTypes),
   imageUrl: PropTypes.string,
-  author: PropTypes.string,
-  _id: PropTypes.string.isRequired,
+  id: PropTypes.string.isRequired,
   fullPost: PropTypes.bool,
 };
