@@ -5,6 +5,8 @@ import { HelmetProvider } from "react-helmet-async";
 import { ApolloProvider } from "@apollo/client/react/index.js";
 import { ApolloClient, InMemoryCache } from "@apollo/client/core/index.js";
 
+export default App;
+
 const queryClient = new QueryClient();
 
 const apolloClient = new ApolloClient({

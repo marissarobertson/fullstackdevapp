@@ -2,6 +2,7 @@ import PropTypes from "prop-types";
 import { User } from "./User.jsx";
 import { Link } from "react-router-dom";
 import slug from "slug";
+import { LikeButton } from "./LikeButton.jsx";
 
 export function Post({
   title,
@@ -13,6 +14,8 @@ export function Post({
 }) {
   return (
     <article className="post">
+      <p style={{ color: "red" }}>TEST</p>
+      <LikeButton postId={id} />
       {fullPost ? (
         <h3>{title}</h3>
       ) : (
@@ -20,8 +23,6 @@ export function Post({
           <h3>{title}</h3>
         </Link>
       )}
-
-      {/* Correctly combined condition wrapping both elements safely */}
       {fullPost && (
         <>
           {imageUrl && (
