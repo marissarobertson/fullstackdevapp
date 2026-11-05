@@ -3,6 +3,7 @@ import {
   listAllPosts,
   listPostsByAuthor,
   listPostsByTag,
+  getTopPosts,
 } from "../services/posts.js";
 
 export const querySchema = `#graphql
@@ -16,6 +17,7 @@ posts(options: PostsOptions): [Post!]!
 postsByAuthor(username: String!, options: PostsOptions) : [Post!]!
 postsByTag(tag: String!, options: PostsOptions): [Post!]!
 postById(id: ID!): Post
+topPosts(limit: Int): [Post!]!
 
 }
 `;
@@ -36,5 +38,6 @@ export const queryResolver = {
     postById: async (parent, { id }) => {
       return await getPostById(id);
     },
+    topPosts: async (parent, { limit }) => await getTopPosts(limit ?? 5),
   },
 };

@@ -8,6 +8,8 @@ export const POST_FIELDS = gql`
     tags
     updatedAt
     createdAt
+    likeCount
+    imageUrl
     author {
       username
     }
@@ -35,6 +37,15 @@ export const CREATE_POST = gql`
     createPost(title: $title, contents: $contents, tags: $tags) {
       id
       title
+    }
+  }
+`;
+export const GET_TOP_POSTS = gql`
+  query getTopPosts($limit: Int) {
+    topPosts(limit: $limit) {
+      id
+      title
+      likeCount
     }
   }
 `;

@@ -10,12 +10,13 @@ export function Post({
   imageUrl,
   author,
   id,
+  likeCount = 0,
   fullPost = false,
 }) {
   return (
     <article className="post">
-      <p style={{ color: "red" }}>TEST</p>
-      <LikeButton postId={id} />
+      <p style={{ color: "red" }}></p>
+      <LikeButton postId={id} initialCount={likeCount} />
       {fullPost ? (
         <h3>{title}</h3>
       ) : (
@@ -53,5 +54,6 @@ Post.propTypes = {
   author: PropTypes.shape(User.propTypes),
   imageUrl: PropTypes.string,
   id: PropTypes.string.isRequired,
+  likeCount: PropTypes.number,
   fullPost: PropTypes.bool,
 };

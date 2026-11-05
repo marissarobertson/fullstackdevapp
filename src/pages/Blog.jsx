@@ -9,6 +9,7 @@ import { Helmet } from "react-helmet-async";
 
 import { useQuery as useGraphQLQuery } from "@apollo/client/react/index.js";
 import { GET_POSTS, GET_POSTS_BY_AUTHOR } from "../api/graphql/posts.js";
+import { TopPosts } from "../components/TopPosts.jsx";
 
 export function Blog() {
   const [author, setAuthor] = useState("");
@@ -46,13 +47,14 @@ export function Blog() {
       />
       <br />
       <PostSorting
-        fields={["createdAt", "updatedAt"]}
+        fields={["createdAt", "updatedAt", "likeCount"]}
         value={sortBy}
         onChange={(value) => setSortBy(value)}
         orderValue={sortOrder}
         onOrderChange={(orderValue) => setSortOrder(orderValue)}
       />
       <hr />
+      <TopPosts />
       <PostList posts={posts} />
     </div>
   );
