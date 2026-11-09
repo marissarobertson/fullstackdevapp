@@ -12,6 +12,7 @@ tags: [String!]
 createdAt: Float
 updatedAt: Float
 likeCount: Int!
+likedByMe: Boolean! 
 }
 `;
 export const postResolver = {
@@ -21,6 +22,10 @@ export const postResolver = {
     },
     likeCount: async (post) => {
       return await Like.countDocuments({ post: post._id }).exec();
+    },
+    likedByMe: async (post, args, { auth }) => {
+      if (!auth) return false;
+      return !!(await Like.exists({ post: post._id, user: auth.sub }));
     },
   },
 };

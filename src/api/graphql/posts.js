@@ -59,3 +59,11 @@ export const GET_TOP_POSTS = gql`
     }
   }
 `;
+export const GET_POST_BY_ID = gql`
+  ${POST_FIELDS}
+  query getPostById($id: ID!) {
+    postById(id: $id) {
+      ...PostFields
+    }
+  }
+`;

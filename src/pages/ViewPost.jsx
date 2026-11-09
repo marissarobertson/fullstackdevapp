@@ -1,13 +1,13 @@
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
-import { useQuery, useMutation } from "@tanstack/react-query";
+import { useMutation } from "@tanstack/react-query";
+import { useQuery as useGraphQLQuery } from "@apollo/client/react/index.js";
 import { Header } from "../components/Header.jsx";
 import { Post } from "../components/Post.jsx";
-import { getPostById } from "../api/posts.js";
+import { GET_POST_BY_ID } from "../api/graphql/posts.js";
 import { PostStats } from "../components/PostStats.jsx";
 import { useEffect, useState } from "react";
 import { postTrackEvent } from "../api/events.js";
-import { getUserInfo } from "../api/users.js";
 import { Helmet } from "react-helmet-async";
 
 export function ViewPost({ postId }) {
@@ -27,17 +27,11 @@ export function ViewPost({ postId }) {
     };
   }, []);
 
-  const postQuery = useQuery({
-    queryKey: ["post", postId],
-    queryFn: () => getPostById(postId),
+  const postQuery = useGraphQLQuery(GET_POST_BY_ID, {
+    variables: { id: postId },
   });
-  const post = postQuery.data;
-  const userInfoQuery = useQuery({
-    queryKey: ["users", post?.author],
-    queryFn: () => getUserInfo(post?.author),
-    enabled: Boolean(post?.author),
-  });
-  const userInfo = userInfoQuery.data ?? {};
+  const post = postQuery.data?.postById;
+
   function truncate(str, max = 160) {
     if (!str) return str;
     if (str.length > max) {
@@ -56,7 +50,7 @@ export function ViewPost({ postId }) {
           <meta property="og:title" content={post.title} />
           <meta property="og:article:published_time" content={post.createdAt} />
           <meta property="og:article:modified_time" content={post.updatedAt} />
-          <meta property="og:article:author" content={userInfo.username} />
+          <meta property="og:article:author" content={post.author?.username} />
           {(post.tags ?? []).map((tag) => (
             <meta key={tag} property="og:article:tag" content={tag} />
           ))}
@@ -68,14 +62,15 @@ export function ViewPost({ postId }) {
       <Link to="/">Back to main page</Link>
       <br />
       <hr />
-      {post ? (
+      {postQuery.loading ? (
+        "Loading..."
+      ) : post ? (
         <div>
-          {" "}
-          <Post {...post} fullPost id={postId} author={userInfo} /> <hr />
-          <PostStats postId={postId} />{" "}
+          <Post {...post} fullPost /> <hr />
+          <PostStats postId={postId} />
         </div>
       ) : (
-        `Post with id${postId} not found.`
+        `Post with id ${postId} not found.`
       )}
     </div>
   );
