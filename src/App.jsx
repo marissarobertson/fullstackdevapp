@@ -3,14 +3,27 @@ import { AuthContextProvider } from "./contexts/AuthContext.jsx";
 import PropTypes from "prop-types";
 import { HelmetProvider } from "react-helmet-async";
 import { ApolloProvider } from "@apollo/client/react/index.js";
-import { ApolloClient, InMemoryCache } from "@apollo/client/core/index.js";
-
-export default App;
+import {
+  ApolloClient,
+  InMemoryCache,
+  HttpLink,
+} from "@apollo/client/core/index.js";
+import { setContext } from "@apollo/client/link/context/index.js";
 
 const queryClient = new QueryClient();
 
+const authLink = setContext((_, { headers }) => {
+  const token =
+    typeof window !== "undefined" ? localStorage.getItem("token") : null;
+  return {
+    headers: { ...headers, ...(token && { Authorization: `Bearer ${token}` }) },
+  };
+});
+
 const apolloClient = new ApolloClient({
-  uri: import.meta.env.VITE_GRAPHQL_URL,
+  link: authLink.concat(
+    new HttpLink({ uri: import.meta.env.VITE_GRAPHQL_URL }),
+  ),
   cache: new InMemoryCache(),
 });
 
@@ -25,6 +38,7 @@ export function App({ children }) {
     </HelmetProvider>
   );
 }
+
 App.propTypes = {
   children: PropTypes.element.isRequired,
 };

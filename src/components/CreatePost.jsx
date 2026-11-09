@@ -16,7 +16,7 @@ export function CreatePost() {
   const [token] = useAuth();
 
   const [createPost, { loading, data }] = useGraphQLMutation(CREATE_POST, {
-    variables: { title, contents },
+    variables: { title, contents, imageUrl },
     context: { headers: { Authorization: `Bearer ${token}` } },
     refetchQueries: [GET_POSTS, GET_POSTS_BY_AUTHOR],
   });

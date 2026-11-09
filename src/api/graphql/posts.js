@@ -33,8 +33,18 @@ export const GET_POSTS_BY_AUTHOR = gql`
   }
 `;
 export const CREATE_POST = gql`
-  mutation createPost($title: String!, $contents: String, $tags: [String!]) {
-    createPost(title: $title, contents: $contents, tags: $tags) {
+  mutation createPost(
+    $title: String!
+    $contents: String
+    $imageUrl: String
+    $tags: [String!]
+  ) {
+    createPost(
+      title: $title
+      contents: $contents
+      imageUrl: $imageUrl
+      tags: $tags
+    ) {
       id
       title
     }

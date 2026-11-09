@@ -12,7 +12,7 @@ type LikeResult {
 type Mutation {
 signupUser(username: String!, password: String!): User
 loginUser(username: String!, password: String!): String
-createPost(title: String!, contents: String, tags:[String]): Post
+createPost(title: String!, contents: String, imageUrl: String, tags:[String]): Post
 toggleLike(postId: ID!): LikeResult!
 }
 `;
@@ -39,7 +39,11 @@ export const mutationResolver = {
       const likeCount = await Like.countDocuments({ post: postId }).exec();
       return { liked: !removed, likeCount };
     },
-    createPost: async (parent, { title, contents, tags }, { auth }) => {
+    createPost: async (
+      parent,
+      { title, contents, imageUrl, tags },
+      { auth },
+    ) => {
       if (!auth) {
         throw new GraphQLError(
           "You need to be authenticated to perform this action.",
@@ -50,7 +54,7 @@ export const mutationResolver = {
           },
         );
       }
-      return await createPost(auth.sub, { title, contents, tags });
+      return await createPost(auth.sub, { title, contents, imageUrl, tags });
     },
   },
 };
